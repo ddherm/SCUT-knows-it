@@ -3,112 +3,112 @@ require("../inc/inc.php");
 $_act = ((isset($_g['act']) and ! empty($_g['act']) ) ? $_g['act'] : ''); 
 $_now = date('Y-m-d H:i:s');
 
-// æ·»åŠ åˆ†ç±»
+// Ìí¼Ó·ÖÀà
 if($_act == 'cat.add')
 {
 	if($_p['name'] == '')
 	{
-		echo "<script>alert('è¯·å¡«å†™ åˆ†ç±»åç§°');history.back();</script>";
+		echo "<script>alert('ÇëÌîĞ´ ·ÖÀàÃû³Æ');history.back();</script>";
     	exit;  
 	}
 	if($_p['desc'] == '')
 	{
-		echo "<script>alert('è¯·å¡«å†™ æè¿°');history.back();</script>";
+		echo "<script>alert('ÇëÌîĞ´ ÃèÊö');history.back();</script>";
     	exit;  
 	}
 	
 	$sql = "insert into `cat` (`name`,`desc`) values ('{$_p['name']}','{$_p['desc']}');";
 	mysql_query($sql); 
-	echo "<script>alert('æ·»åŠ æˆåŠŸ,ç‚¹å‡»è¿”å›!');location='cat_list.php';</script>";
+	echo "<script>alert('Ìí¼Ó³É¹¦,µã»÷·µ»Ø!');location='cat_list.php';</script>";
 	exit;
 }
 
-// ç¼–è¾‘åˆ†ç±»
+// ±à¼­·ÖÀà
 if($_act == 'cat.edit')
 {
 	$id = intval($_p['id']);
 	if($_p['name'] == '')
 	{
-		echo "<script>alert('è¯·å¡«å†™ åˆ†ç±»åç§°');history.back();</script>";
+		echo "<script>alert('ÇëÌîĞ´ ·ÖÀàÃû³Æ');history.back();</script>";
     	exit;  
 	}
 	if($_p['desc'] == '')
 	{
-		echo "<script>alert('è¯·å¡«å†™ æè¿°');history.back();</script>";
+		echo "<script>alert('ÇëÌîĞ´ ÃèÊö');history.back();</script>";
     	exit;  
 	}
 	
 	$sql = "update `cat` set `name` = '{$_p['name']}',`desc` = '{$_p['desc']}' where `id` = {$id};";
 	mysql_query($sql); 
-	echo "<script>alert('ç¼–è¾‘æˆåŠŸ,ç‚¹å‡»è¿”å›!');location='cat_list.php';</script>";
+	echo "<script>alert('±à¼­³É¹¦,µã»÷·µ»Ø!');location='cat_list.php';</script>";
 	exit;
 }
 
-// åˆ é™¤åˆ†ç±»
+// É¾³ı·ÖÀà
 if($_act == 'cat.del')
 {
 	$id = intval($_g['id']);
 	
 	$sql = "delete from `cat` where id = {$id};";
 	mysql_query($sql); 
-	echo "<script>alert('åˆ é™¤æˆåŠŸ,ç‚¹å‡»è¿”å›!');location='cat_list.php';</script>";
+	echo "<script>alert('É¾³ı³É¹¦,µã»÷·µ»Ø!');location='cat_list.php';</script>";
 	exit;
 }
 
 
 
-// åˆ é™¤ä¼šå‘˜
+// É¾³ı»áÔ±
 if($_act == 'user.del')
 {
 	$id = intval($_g['id']);
 	$sql = "delete from `users` where id = {$id};";
 	mysql_query($sql); 
-	echo "<script>alert('åˆ é™¤æˆåŠŸ,ç‚¹å‡»è¿”å›!');location='user_list.php';</script>";
+	echo "<script>alert('É¾³ı³É¹¦,µã»÷·µ»Ø!');location='user_list.php';</script>";
 	exit;
 }
 
-// ç•™è¨€æœ¬å›å¤
+// ÁôÑÔ±¾»Ø¸´
 if($_act == 'books.reply')
 {
 	$id = $_p['id'];
 	if($_p['reply'] == '')
 	{
-		echo "<script>alert('è¯·å¡«å†™ å›å¤å†…å®¹');history.back();</script>";
+		echo "<script>alert('ÇëÌîĞ´ »Ø¸´ÄÚÈİ');history.back();</script>";
     	exit;  
 	}
 	
 	$sql = "update `books` set `reply` = '{$_p['reply']}', `reply_time` = '{$_now}' where `id` = {$id};";
 	mysql_query($sql); 
-	echo "<script>alert('å›å¤æˆåŠŸ,ç‚¹å‡»è¿”å›!');location='books_list.php';</script>";
+	echo "<script>alert('»Ø¸´³É¹¦,µã»÷·µ»Ø!');location='books_list.php';</script>";
 	exit;
 }
 
 
 // ------------------------------------------------------------------------------------------
-// ä¿®æ”¹ç®¡ç†å‘˜å¯†ç 
+// ĞŞ¸Ä¹ÜÀíÔ±ÃÜÂë
 if($_act == 'admin_pwd.edit')
 {
 	$id = intval($_s['admin_id']);
 	if($_p['pwd1'] == '')
 	{
-		echo "<script>alert('è¯·å¡«å†™ å½“å‰å¯†ç ');history.back();</script>";
+		echo "<script>alert('ÇëÌîĞ´ µ±Ç°ÃÜÂë');history.back();</script>";
     	exit;  
 	}
 	if($_p['pwd2'] == '')
 	{
-		echo "<script>alert('è¯·å¡«å†™ æ–°å¯†ç ');history.back();</script>";
+		echo "<script>alert('ÇëÌîĞ´ ĞÂÃÜÂë');history.back();</script>";
     	exit;  
 	}
 	if($_p['pwd2'] != $_p['pwd3'])
 	{
-		echo "<script>alert('ä¸¤æ¬¡å¯†ç ä¸ç›¸åŒ');history.back();</script>";
+		echo "<script>alert('Á½´ÎÃÜÂë²»ÏàÍ¬');history.back();</script>";
     	exit;  
 	}
 	$adm_info = get_one("select * from `admin` where `id` = {$id};");
 	
 	if($adm_info['password'] != $_p['pwd1'])
 	{
-		echo "<script>alert('å½“å‰å¯†ç ä¸æ­£ç¡®');history.back();</script>";
+		echo "<script>alert('µ±Ç°ÃÜÂë²»ÕıÈ·');history.back();</script>";
     	exit;  
 	}
 	
@@ -121,54 +121,54 @@ if($_act == 'admin_pwd.edit')
 	unset($_SESSION['admin_name']);
 	unset($_SESSION['admin_id']);
 	
-	echo "<script>alert('ä¿®æ”¹æˆåŠŸ,ç‚¹å‡»é‡æ–°ç™»å½•!');top.location='login.php';</script>";
+	echo "<script>alert('ĞŞ¸Ä³É¹¦,µã»÷ÖØĞÂµÇÂ¼!');top.location='login.php';</script>";
 	exit;
 }
 
 
 
 
-// æ³¨å†Œä¼šå‘˜
+// ×¢²á»áÔ±
 if($_act == 'user.add')
 {
 	if($_p['passport'] == '')
 	{
-		echo "<script>alert('è¯·å¡«å†™ å¸å·');history.back();</script>";
+		echo "<script>alert('ÇëÌîĞ´ ÕÊºÅ');history.back();</script>";
     	exit;  
 	}
 	if($_p['upload'] == '')
 	{
-		echo "<script>alert('è¯·ä¸Šä¼  å¤´åƒ');history.back();</script>";
+		echo "<script>alert('ÇëÉÏ´« Í·Ïñ');history.back();</script>";
     	exit;  
 	}
 	if($_p['pwd1'] == '')
 	{
-		echo "<script>alert('è¯·å¡«å†™ å¯†ç ');history.back();</script>";
+		echo "<script>alert('ÇëÌîĞ´ ÃÜÂë');history.back();</script>";
     	exit;  
 	}
 	if($_p['pwd1'] != $_p['pwd2'])
 	{
-		echo "<script>alert('ä¸¤æ¬¡å¯†ç ä¸ç›¸åŒ');history.back();</script>";
+		echo "<script>alert('Á½´ÎÃÜÂë²»ÏàÍ¬');history.back();</script>";
     	exit;  
 	}
 	if($_p['sex'] == '')
 	{
-		echo "<script>alert('è¯·é€‰æ‹© æ€§åˆ«');history.back();</script>";
+		echo "<script>alert('ÇëÑ¡Ôñ ĞÔ±ğ');history.back();</script>";
     	exit;  
 	}
 	// if($_p['btd'] == '')
 	// {
-	// 	echo "<script>alert('è¯·å¡«å†™ ç”Ÿæ—¥');history.back();</script>";
+	// 	echo "<script>alert('ÇëÌîĞ´ ÉúÈÕ');history.back();</script>";
     // 	exit;  
 	// }
 	// if($_p['qq'] == '')
 	// {
-	// 	echo "<script>alert('è¯·å¡«å†™ qq');history.back();</script>";
+	// 	echo "<script>alert('ÇëÌîĞ´ qq');history.back();</script>";
     // 	exit;  
 	// }
 	// if($_p['addr'] == '')
 	// {
-	// 	echo "<script>alert('è¯·å¡«å†™ åœ°å€');history.back();</script>";
+	// 	echo "<script>alert('ÇëÌîĞ´ µØÖ·');history.back();</script>";
     // 	exit;  
 	// }
 	$sql = "insert into `users` (`passport`, `password`, `sex`,`birthday`,`qq`,`addr`,`reg_time`, `avatar`) values 
@@ -183,41 +183,41 @@ if($_act == 'user.add')
 		'{$_p['upload']}'
 		);";
 	mysql_query($sql); 
-	echo "<script>alert('æˆåŠŸ,ç‚¹å‡»è·³è½¬!');location='../index.php';</script>";
+	echo "<script>alert('³É¹¦,µã»÷Ìø×ª!');location='../index.php';</script>";
 	exit;
 }
 
-// ç¼–è¾‘ä¼šå‘˜
+// ±à¼­»áÔ±
 if($_act == 'user.edit')
 {
 	if($_p['passport'] == '')
 	{
-		echo "<script>alert('è¯·å¡«å†™ å¸å·');history.back();</script>";
+		echo "<script>alert('ÇëÌîĞ´ ÕÊºÅ');history.back();</script>";
     	exit;  
 	}
 	if($_p['upload'] == '')
 	{
-		echo "<script>alert('è¯·ä¸Šä¼  å¤´åƒ');history.back();</script>";
+		echo "<script>alert('ÇëÉÏ´« Í·Ïñ');history.back();</script>";
     	exit;  
 	}
 	if($_p['sex'] == '')
 	{
-		echo "<script>alert('è¯·é€‰æ‹© æ€§åˆ«');history.back();</script>";
+		echo "<script>alert('ÇëÑ¡Ôñ ĞÔ±ğ');history.back();</script>";
     	exit;  
 	}
 	if($_p['btd'] == '')
 	{
-		echo "<script>alert('è¯·å¡«å†™ ç”Ÿæ—¥');history.back();</script>";
+		echo "<script>alert('ÇëÌîĞ´ ÉúÈÕ');history.back();</script>";
     	exit;  
 	}
 	if($_p['qq'] == '')
 	{
-		echo "<script>alert('è¯·å¡«å†™ qq');history.back();</script>";
+		echo "<script>alert('ÇëÌîĞ´ qq');history.back();</script>";
     	exit;  
 	}
 	if($_p['addr'] == '')
 	{
-		echo "<script>alert('è¯·å¡«å†™ åœ°å€');history.back();</script>";
+		echo "<script>alert('ÇëÌîĞ´ µØÖ·');history.back();</script>";
     	exit;  
 	}
 	
@@ -231,7 +231,305 @@ if($_act == 'user.edit')
 	where id = {$_s['user_id']}	
 	";
 	mysql_query($sql); 
-	echo "<script>alert('æˆåŠŸ,ç‚¹å‡»è·³è½¬!');location='../user_info.php';</script>";
+	echo "<script>alert('³É¹¦,µã»÷Ìø×ª!');location='../user_info.php';</script>";
 	exit;
 }
 
+
+
+
+// »áÔ±µÇÂ¼
+if($_act == 'user.login')
+{
+	if($_p['passport'] == '')
+	{
+		echo "<script>alert('ÇëÌîĞ´ÕÊºÅ');history.back();</script>";
+    	exit;  
+	}
+	if($_p['pwd1'] == '')
+	{
+		echo "<script>alert('ÇëÌîĞ´ÃÜÂë');history.back();</script>";
+    	exit;  
+	}
+	
+	$user = get_one("select * from users where passport = '{$_p['passport']}' and password = '{$_p['pwd1']}'");
+	
+	if(! $user)
+	{
+		echo "<script>alert('ÕÊºÅÃÜÂë²»ÕıÈ·');history.back();</script>";
+    	exit;  
+	}
+	
+	$_SESSION['user_login'] = true;
+	$_SESSION['user_name']  = $user['passport'];
+	$_SESSION['user_id']    = $user['id'];
+
+	echo "<script>alert('µÇÂ¼³É¹¦');window.history.go(-2);</script>";
+	exit;
+	// echo "<script>alert('µÇÂ¼³É¹¦');window.location.href='../user_info.php'</script>";
+	
+}
+
+
+
+
+// ÁôÑÔ
+if($_act == 'books.add')
+{
+	if($_p['cont'] == '')
+	{
+		echo "<script>alert('ÇëÌîĞ´ ÁôÑÔÄÚÈİ');history.back();</script>";
+    	exit;  
+	}
+	
+	$sql = "insert into `books` (`conts`, `post_time`, `reply`,`reply_time`,`user_id`) values 
+	(
+		'{$_p['cont']}',
+		'{$_now}',
+		'',
+		'',
+		'{$_s['user_id']}'
+	);";
+	// echo $sql;
+	mysql_query($sql); 
+	echo "<script>alert('³É¹¦,µã»÷Ìø×ª!(ÄúµÄÁôÑÔÒÑ¾­ÉÏ´«£¬´ı¹ÜÀíÔ±»Ø¸´ºó¼´¿ÉÏÔÊ¾)');location='../books.php';</script>";
+	exit;
+}
+
+// ĞŞ¸Ä»áÔ±ÃÜÂë
+if($_act == 'user.reset_pwd')
+{
+	$id = intval($_s['user_id']);
+	if($_p['pwd1'] == '')
+	{
+		echo "<script>alert('ÇëÌîĞ´ µ±Ç°ÃÜÂë');history.back();</script>";
+    	exit;  
+	}
+	if($_p['pwd2'] == '')
+	{
+		echo "<script>alert('ÇëÌîĞ´ ĞÂÃÜÂë');history.back();</script>";
+    	exit;  
+	}
+	if($_p['pwd2'] != $_p['pwd3'])
+	{
+		echo "<script>alert('Á½´ÎÃÜÂë²»ÏàÍ¬');history.back();</script>";
+    	exit;  
+	}
+	$user_info = get_one("select * from `users` where `id` = {$id};");
+	
+	if($user_info['password'] != $_p['pwd1'])
+	{
+		echo "<script>alert('µ±Ç°ÃÜÂë²»ÕıÈ·');history.back();</script>";
+    	exit;  
+	}
+	
+	$sql = "update `users` set 
+			`password` = '{$_p['pwd3']}'
+			 where `id` = {$id};";
+	mysql_query($sql); 
+	
+	unset($_SESSION['user_login']);
+	unset($_SESSION['user_name']);
+	unset($_SESSION['user_id']);
+	
+	echo "<script>alert('ĞŞ¸Ä³É¹¦,µã»÷ÖØĞÂµÇÂ¼!');location='../login.php';</script>";
+	exit;
+}
+
+
+// ·¢²¼Ö÷Ìâ
+if($_act == 'posts.add')
+{
+	if(! isset($_s['user_login']))
+	{
+		echo "<script>alert('ÇëÏÈµÇÂ½');location='../login.php';</script>";
+    	exit;  
+	}
+	
+	if($_p['title'] == '')
+	{
+		echo "<script>alert('ÇëÌîĞ´ ±êÌâ');history.back();</script>";
+    	exit;  
+	}
+	
+	if($_p['conts'] == '')
+	{
+		echo "<script>alert('ÇëÌîĞ´ ÄÚÈİ');history.back();</script>";
+    	exit;  
+	}
+	
+	$sql = "insert into `posts` (`title`, `conts`, `post_time`,`user_id`,`cat_id`) values 
+	(
+		'{$_p['title']}',
+		'{$_p['conts']}',
+		'{$_now}',
+		'{$_s['user_id']}',
+		'{$_p['cat_id']}'
+	);";
+	mysql_query($sql); 
+	echo "<script>alert('³É¹¦,µã»÷Ìø×ª!(ÄúµÄÄÚÈİÒÑ¾­³É¹¦ÉÏ´«£¬´ı¹ÜÀíÔ±ÉóºËºó¼´¿ÉÏÔÊ¾)');location='../cat.php?id=".$_p['cat_id']."';</script>";
+	exit;
+}
+
+
+// »Ø¸´Ìû×Ó
+if($_act == 'comm.add')
+{
+	if(! isset($_s['user_login']))
+	{
+		echo "<script>alert('ÇëÏÈµÇÂ½');location='../login.php';</script>";
+    	exit;  
+	}
+	
+	if($_p['conts'] == '')
+	{
+		echo "<script>alert('ÇëÌîĞ´ ÄÚÈİ');history.back();</script>";
+    	exit;  
+	}
+	
+	$sql = "insert into `comm` (`post_id`, `user_id`, `conts`,`post_time`) values 
+	(
+		'{$_p['post_id']}',
+		'{$_s['user_id']}',
+		'{$_p['conts']}',
+		'{$_now}'
+	);";
+	mysql_query($sql); 
+	echo "<script>alert('³É¹¦,µã»÷Ìø×ª!');location='../posts.php?id=".$_p['post_id']."';</script>";
+	exit;
+}
+
+// ËÍÏÊ»¨
+if($_act == 'flower')
+{
+	if(! isset($_s['user_login']))
+	{
+		echo "<script>alert('ÇëÏÈµÇÂ½');location='../login.php';</script>";
+    	exit;  
+	}
+	if(! isset($_g['tuser_id']) or ! isset($_g['post_id']))
+	{
+		echo "<script>alert('È±ÉÙ²ÎÊı');history.back();</script>";
+    	exit;  
+	}
+	if($_s['user_id'] == $_g['tuser_id'])
+	{
+		echo "<script>alert('²»ÄÜ¸ø×Ô¼ºËÍ»¨');location='../posts.php?id=".$_g['post_id']."';</script>";
+    	exit;  
+	}
+	$sql = "insert into `flower` (`f_user`,`t_user`,`add_time`) values 
+	('{$_s['user_id']}','{$_g['tuser_id']}','{$_now}')";
+	mysql_query($sql); 
+	echo "<script>alert('³É¹¦,µã»÷Ìø×ª!');location='../posts.php?id=".$_g['post_id']."';</script>";
+	exit;
+}
+
+// ¼ÓºÃÓÑ
+if($_act == 'friend')
+{
+	if(! isset($_s['user_login']))
+	{
+		echo "<script>alert('ÇëÏÈµÇÂ½');location='../login.php';</script>";
+    	exit;  
+	}
+	if(! isset($_g['tuser_id']) or ! isset($_g['post_id']))
+	{
+		echo "<script>alert('È±ÉÙ²ÎÊı');history.back();</script>";
+    	exit;  
+	}
+	if($_s['user_id'] == $_g['tuser_id'])
+	{
+		echo "<script>alert('²»ÄÜ¼Ó×Ô¼ºÎªºÃÓÑ');location='../posts.php?id=".$_g['post_id']."';</script>";
+    	exit;  
+	}
+	$sql = "insert into `friends` (`f_user`,`t_user`,`conf`) values 
+	('{$_s['user_id']}','{$_g['tuser_id']}',0)";
+	mysql_query($sql); 
+	echo "<script>alert('³É¹¦,µã»÷Ìø×ª!');location='../posts.php?id=".$_g['post_id']."';</script>";
+	exit;
+}
+
+
+// É¾³ıÌû×Ó
+if($_act == 'posts.del')
+{
+	$id = intval($_g['id']);
+	
+	$sql = "delete from `posts` where id = {$id};";
+	mysql_query($sql); 
+	$sql = "delete from `comm` where post_id = {$id};";
+	mysql_query($sql); 
+	echo "<script>alert('É¾³ı³É¹¦,µã»÷·µ»Ø!');location='zt_list.php';</script>";
+	exit;
+}
+
+
+// É¾³ı»Ø¸´
+if($_act == 'comm.del')
+{
+	$id = intval($_g['id']);
+	
+	$sql = "delete from `comm` where id = {$id};";
+	mysql_query($sql); 
+	echo "<script>alert('É¾³ı³É¹¦,µã»÷·µ»Ø!');location='hf_list.php';</script>";
+	exit;
+}
+
+// É¾³ıºÃÓÑ
+if($_act == 'friend.del')
+{
+	$id = intval($_g['tuser_id']);
+	$sql = "delete from `friends` where f_user = {$_s['user_id']} and t_user = {$id};";
+	mysql_query($sql); 
+	echo "<script>alert('É¾³ı³É¹¦,µã»÷·µ»Ø!');location='../user_friend.php';</script>";
+	exit;
+}
+
+
+
+// »Ø¸´Ìû×Ó
+if($_act == 'msg.add')
+{
+	if(! isset($_s['user_login']))
+	{
+		echo "<script>alert('ÇëÏÈµÇÂ½');location='../login.php';</script>";
+    	exit;  
+	}
+	
+	if($_p['conts'] == '')
+	{
+		echo "<script>alert('ÇëÌîĞ´ ÄÚÈİ');history.back();</script>";
+    	exit;  
+	}
+	
+	if($_s['user_id'] == $_p['tuser_id'])
+	{
+		echo "<script>alert('²»ÄÜ¸ø×Ô¼º·¢ĞÅÏ¢');location='../user_msg.php?tuser_id=".$_p['tuser_id']."';</script>";
+    	exit;  
+	}
+	
+	$sql = "insert into `msg` (`f_user`, `t_user`, `conts`,`post_time`) values 
+	(
+		'{$_s['user_id']}',
+		'{$_p['tuser_id']}',
+		'{$_p['conts']}',
+		'{$_now}'
+	);";
+	mysql_query($sql); 
+	echo "<script>alert('³É¹¦,µã»÷Ìø×ª!');location='../user_msg.php?tuser_id=".$_p['tuser_id']."';</script>";
+	exit;
+}
+
+// ÉóºËÖ÷Ìâ
+if ($_act == 'posts.confirm') {
+	$sql = "update posts set status = 1 where id = ".$_GET['id'];
+	mysql_query($sql); 
+	echo "<script>alert('³É¹¦,µã»÷Ìø×ª!');location='zt_list.php';</script>";
+}
+
+// É¾³ıÁôÑÔ
+if ($_act == 'books.del') {
+	$sql = "delete from books where id = ".$_GET['id'];
+	mysql_query($sql);
+	echo "<script>alert('³É¹¦,µã»÷Ìø×ª!');location='books_list.php';</script>";
+}
